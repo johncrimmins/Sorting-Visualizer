@@ -4,6 +4,9 @@ import Controls from './Controls';
 import Canvas from './Canvas';
 
 
+var xPositions = []
+var yHeights = []
+const NUMLINES = 100
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -40,24 +43,12 @@ function mergeSort(arr) {
 
 const draw = context => {
 
-
-  var xPositions = []
-  var yHeights = []
-
   context.fillStyle = "rgb(0, 0, 0)";
   for (var i = 0; i < 100; i+=1) {
     const height = getRandomInt(500) 
     context.fillRect(i * 10, 0, 10, height);
     xPositions.push(i*10);
     yHeights.push(height);
-  }
-  console.log(xPositions)
-  console.log(yHeights)
-
-  context.clearRect(0,0,800, 500)
-
-  for (var i = 0; i < xPositions.length; i++) {
-    context.fillRect(xPositions[i], 0, 10, yHeights[i])
   }
 
   context.clearRect(0,0,800, 500)
@@ -76,7 +67,7 @@ function App() {
   return (
     <div className="App">
       <Controls />
-      <Canvas draw={draw} numLines={100} />
+      <Canvas draw={draw} numLines={NUMLINES}  />
     </div>
   );
 }
